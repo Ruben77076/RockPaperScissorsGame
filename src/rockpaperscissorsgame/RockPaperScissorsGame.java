@@ -19,7 +19,7 @@ public class RockPaperScissorsGame {
     public static void main(String[] args) {
         
         //int[] pickOptions = {1,2,3};
-        String[] pickOptions = {"Rock","Paper","Scissors"}; //initialize combobox options
+        
         int[] scores = {0, 0, 0}; // initialize scoreboard
         
         do {
@@ -38,7 +38,7 @@ public class RockPaperScissorsGame {
             }
             int userPick = Integer.parseInt(userInput); //checks if userinput is an integer then assigns to userPick
             
-                           
+            viewAIpick(cpuPick);               
                 
             getWinner(cpuPick, userPick, scores); //executes getWinner method
             
@@ -56,6 +56,7 @@ public class RockPaperScissorsGame {
                 + "\nA.I. Wins: " + scores[1] + "\nTied Games: " + scores[2],
                 "Rock Paper Scissors",JOptionPane.INFORMATION_MESSAGE);
     }   //will display the scoreboard according to the array scores with 3 indexes: Your win, Ai wins, Ties
+    
     private static void getWinner(int cpuPick, int userPick, int[] scores){
         if (userPick == cpuPick) {
             JOptionPane.showMessageDialog(null, "It's a tie! What are the chances!"
@@ -78,9 +79,24 @@ public class RockPaperScissorsGame {
         }
         
     }
+    
+    private static void viewAIpick(int cpuPick){
+        if (cpuPick == 1) {
+            JOptionPane.showMessageDialog(null, "AI chooses ROCK! "
+            ,"Rock Paper Scissors", JOptionPane.INFORMATION_MESSAGE);
+        }else if (cpuPick == 2) {
+            JOptionPane.showMessageDialog(null, "AI chooses PAPER! "
+            ,"Rock Paper Scissors", JOptionPane.INFORMATION_MESSAGE);
+        }else {
+            JOptionPane.showMessageDialog(null, "AI chooses SCISSORS! "
+            ,"Rock Paper Scissors", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    }
+    
     private static String showComboBox(){
         //create the combo box for the beginning input of game. Removes issues with validation.
-        String[] picks = {"Rock","Paper","Scissors"};
+        String[] picks = {"ROCK","PAPER","SCISSORS"};
         JComboBox<String> comboBox = new JComboBox<>(picks);
         int choice = JOptionPane.showConfirmDialog(null,
         comboBox, "Rock Paper Scissors Game", JOptionPane.OK_CANCEL_OPTION,
